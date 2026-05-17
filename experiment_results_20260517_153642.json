@@ -1,0 +1,90 @@
+[
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "Light congestion",
+    "total_arrived": 29736,
+    "total_transmitted": 25000,
+    "total_dropped": 4536,
+    "loss_rate": 0.15254237288135594,
+    "avg_queue_length": 194.714,
+    "avg_queue_backlog": 46.66371565811043,
+    "avg_weighted_throughput": 31.072774490619956
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "Light congestion",
+    "total_arrived": 30006,
+    "total_transmitted": 21356,
+    "total_dropped": 8500,
+    "loss_rate": 0.28327667799773376,
+    "avg_queue_length": 148.658,
+    "avg_queue_backlog": 70.06504158550185,
+    "avg_weighted_throughput": 28.97855410823044
+  },
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "Medium congestion",
+    "total_arrived": 37395,
+    "total_transmitted": 25000,
+    "total_dropped": 12195,
+    "loss_rate": 0.32611311672683513,
+    "avg_queue_length": 198.38,
+    "avg_queue_backlog": 77.26119164037738,
+    "avg_weighted_throughput": 35.02351845818036
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "Medium congestion",
+    "total_arrived": 37611,
+    "total_transmitted": 24497,
+    "total_dropped": 12964,
+    "loss_rate": 0.34468639493765124,
+    "avg_queue_length": 149.338,
+    "avg_queue_backlog": 104.9984324213676,
+    "avg_weighted_throughput": 33.91445393032443
+  },
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "Heavy congestion",
+    "total_arrived": 49960,
+    "total_transmitted": 25000,
+    "total_dropped": 24760,
+    "loss_rate": 0.4955964771817454,
+    "avg_queue_length": 199.386,
+    "avg_queue_backlog": 107.97385258033088,
+    "avg_weighted_throughput": 38.7441344346908
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "Heavy congestion",
+    "total_arrived": 49822,
+    "total_transmitted": 24500,
+    "total_dropped": 25172,
+    "loss_rate": 0.5052386495925495,
+    "avg_queue_length": 149.66,
+    "avg_queue_backlog": 125.63885473322813,
+    "avg_weighted_throughput": 33.62372548636891
+  },
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "Uniform weights (light congestion)",
+    "total_arrived": 30024,
+    "total_transmitted": 25000,
+    "total_dropped": 4824,
+    "loss_rate": 0.1606714628297362,
+    "avg_queue_length": 195.264,
+    "avg_queue_backlog": 47.30291989734734,
+    "avg_weighted_throughput": 31.34607714718052
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "Uniform weights (light congestion)",
+    "total_arrived": 30001,
+    "total_transmitted": 21528,
+    "total_dropped": 8323,
+    "loss_rate": 0.2774240858638045,
+    "avg_queue_length": 148.828,
+    "avg_queue_backlog": 70.0361881183931,
+    "avg_weighted_throughput": 29.230318683215067
+  }
+]

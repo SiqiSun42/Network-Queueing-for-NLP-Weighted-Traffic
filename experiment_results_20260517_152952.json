@@ -1,0 +1,90 @@
+[
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "轻度拥塞",
+    "total_arrived": 30055,
+    "total_transmitted": 25000,
+    "total_dropped": 4855,
+    "loss_rate": 0.1615371818333056,
+    "avg_queue_length": 195.636,
+    "avg_queue_backlog": 48.5775014426095,
+    "avg_weighted_throughput": 31.361040633804663
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "轻度拥塞",
+    "total_arrived": 29862,
+    "total_transmitted": 21206,
+    "total_dropped": 8506,
+    "loss_rate": 0.284843613957538,
+    "avg_queue_length": 148.724,
+    "avg_queue_backlog": 70.0152164917584,
+    "avg_weighted_throughput": 28.75356020108865
+  },
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "中度拥塞",
+    "total_arrived": 37741,
+    "total_transmitted": 25000,
+    "total_dropped": 12541,
+    "loss_rate": 0.33229114225908163,
+    "avg_queue_length": 198.714,
+    "avg_queue_backlog": 78.86784743902705,
+    "avg_weighted_throughput": 35.16393631777828
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "中度拥塞",
+    "total_arrived": 37390,
+    "total_transmitted": 24434,
+    "total_dropped": 12806,
+    "loss_rate": 0.3424979941160738,
+    "avg_queue_length": 149.196,
+    "avg_queue_backlog": 98.56521830555594,
+    "avg_weighted_throughput": 34.1003685694396
+  },
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "重度拥塞",
+    "total_arrived": 50228,
+    "total_transmitted": 25000,
+    "total_dropped": 25028,
+    "loss_rate": 0.4982878075973561,
+    "avg_queue_length": 199.378,
+    "avg_queue_backlog": 108.49413254462334,
+    "avg_weighted_throughput": 38.8108150235393
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "重度拥塞",
+    "total_arrived": 50004,
+    "total_transmitted": 24500,
+    "total_dropped": 25354,
+    "loss_rate": 0.5070394368450524,
+    "avg_queue_length": 149.67,
+    "avg_queue_backlog": 126.11418832464257,
+    "avg_weighted_throughput": 33.79761194287601
+  },
+  {
+    "scheduler": "Max-Weight",
+    "scenario": "均匀权重（轻度拥塞）",
+    "total_arrived": 30153,
+    "total_transmitted": 25000,
+    "total_dropped": 4953,
+    "loss_rate": 0.16426226246144662,
+    "avg_queue_length": 195.586,
+    "avg_queue_backlog": 48.386275456096634,
+    "avg_weighted_throughput": 31.352799023958738
+  },
+  {
+    "scheduler": "NUM",
+    "scenario": "均匀权重（轻度拥塞）",
+    "total_arrived": 30199,
+    "total_transmitted": 21348,
+    "total_dropped": 8701,
+    "loss_rate": 0.2881221232491142,
+    "avg_queue_length": 148.96,
+    "avg_queue_backlog": 70.37224411441021,
+    "avg_weighted_throughput": 28.983278774620945
+  }
+]
