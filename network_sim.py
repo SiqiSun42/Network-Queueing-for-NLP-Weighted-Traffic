@@ -10,12 +10,13 @@ class NetworkSimulator:
                  link_capacity: int,
                  arrival_rate: float,
                  weight_dist: str = "uniform",
-                 sim_time: int = 1000):
+                 sim_time: int = 1000,
+                 corpus_file: str = None):
         self.link_capacity = link_capacity
         self.arrival_rate = arrival_rate
         self.sim_time = sim_time
         
-        self.traffic_gen = PoissonTrafficGenerator(arrival_rate, weight_dist)
+        self.traffic_gen = PoissonTrafficGenerator(arrival_rate, weight_dist, corpus_file)
         
         self.maxweight_scheduler = MaxWeightScheduler(link_capacity)
         self.num_scheduler = NUMScheduler(link_capacity)
@@ -41,7 +42,7 @@ class NetworkSimulator:
     def run_maxweight(self):
         print("Running Max-Weight scheduler simulation...")
         self.maxweight_scheduler = MaxWeightScheduler(self.link_capacity)
-        self.traffic_gen = PoissonTrafficGenerator(self.arrival_rate)
+        self.traffic_gen = PoissonTrafficGenerator(self.arrival_rate, self.traffic_gen.weight_dist)
         
         for t in range(self.sim_time):
             arrivals = self.traffic_gen.generate_arrivals(t)
@@ -74,7 +75,7 @@ class NetworkSimulator:
     def run_num(self):
         print("Running NUM scheduler simulation...")
         self.num_scheduler = NUMScheduler(self.link_capacity)
-        self.traffic_gen = PoissonTrafficGenerator(self.arrival_rate)
+        self.traffic_gen = PoissonTrafficGenerator(self.arrival_rate, self.traffic_gen.weight_dist)
         
         for t in range(self.sim_time):
             arrivals = self.traffic_gen.generate_arrivals(t)

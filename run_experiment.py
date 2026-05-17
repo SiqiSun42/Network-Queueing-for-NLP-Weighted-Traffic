@@ -25,10 +25,11 @@ def run_comprehensive_experiment():
             "weight_dist": "bimodal"
         },
         {
-            "name": "Uniform weights (light congestion)",
+            "name": "Semantic weights (light congestion)",
             "link_capacity": 50,
             "arrival_rate": 60,
-            "weight_dist": "uniform"
+            "weight_dist": "semantic",
+            "corpus_file": "corpus.txt"
         }
     ]
     
@@ -43,7 +44,8 @@ def run_comprehensive_experiment():
             link_capacity=scenario['link_capacity'],
             arrival_rate=scenario['arrival_rate'],
             weight_dist=scenario['weight_dist'],
-            sim_time=500
+            sim_time=500,
+            corpus_file=scenario.get('corpus_file')
         )
         
         metrics_mw, metrics_num = simulator.run_both()
