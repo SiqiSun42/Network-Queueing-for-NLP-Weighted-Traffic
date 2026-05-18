@@ -35,7 +35,7 @@ class QueueStabilityAnalysis:
             arrivals = simulator.traffic_gen.generate_arrivals(t)
             simulator.maxweight_scheduler.enqueue(arrivals)
             mw_queue_lengths.append(simulator.maxweight_scheduler.get_queue_length())
-            transmitted = simulator.maxweight_scheduler.schedule()
+            transmitted = simulator.maxweight_scheduler.schedule(t)
             mw_times.append(t)
             
             if (t + 1) % 100 == 0:
@@ -52,7 +52,7 @@ class QueueStabilityAnalysis:
             arrivals = simulator.traffic_gen.generate_arrivals(t)
             simulator.num_scheduler.enqueue(arrivals)
             num_queue_lengths.append(simulator.num_scheduler.get_queue_length())
-            transmitted = simulator.num_scheduler.schedule()
+            transmitted = simulator.num_scheduler.schedule(t)
             num_times.append(t)
             
             if (t + 1) % 100 == 0:

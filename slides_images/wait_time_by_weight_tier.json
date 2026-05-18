@@ -1,0 +1,36 @@
+{
+  "link_capacity": 50,
+  "arrival_rate": 60,
+  "lambda_over_c": 1.2,
+  "sim_time": 500,
+  "weight_tier_thresholds": "low: w<=0.35; medium: 0.35<w<=0.65; high: w>0.65",
+  "delay_definition": "timeslots from arrival slot to slot where packet is transmitted or dropped",
+  "maxweight": {
+    "low": {
+      "count": 8192,
+      "mean_slots": 8.631103515625
+    },
+    "medium": {
+      "count": 10139,
+      "mean_slots": 0.05335831936088371
+    },
+    "high": {
+      "count": 11685,
+      "mean_slots": 0.0
+    }
+  },
+  "num": {
+    "low": {
+      "count": 8377,
+      "mean_slots": 0.6915363495284708
+    },
+    "medium": {
+      "count": 9876,
+      "mean_slots": 11.669198055893075
+    },
+    "high": {
+      "count": 11621,
+      "mean_slots": 0.02615953876602702
+    }
+  }
+}

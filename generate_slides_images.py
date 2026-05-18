@@ -10,6 +10,7 @@ def main():
         ROOT / "plot_tsr_comparison.py",
         ROOT / "plot_queue_stability.py",
         ROOT / "analyze_packet_loss.py",
+        ROOT / "plot_wait_time_by_weight_tier.py",
     ]
     for path in scripts:
         subprocess.check_call([sys.executable, str(path)], cwd=str(ROOT))

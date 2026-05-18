@@ -1,0 +1,13 @@
+TSR evaluation summary
+
+Scenario: Semantic weights (TSR / light congestion)
+  MAXWEIGHT: average_tsr=0.12360578209827085 average_semantic_preservation=1.0 dropped=4955
+  NUM: average_tsr=0.1267639065066276 average_semantic_preservation=1.0 dropped=16638
+
+Scenario: Bimodal weights (TSR / light congestion)
+  MAXWEIGHT: average_tsr=None average_semantic_preservation=None dropped=4600
+  NUM: average_tsr=None average_semantic_preservation=None dropped=12636
+
+Scenario: Semantic weights (TSR / heavy congestion)
+  MAXWEIGHT: average_tsr=0.13513358352040136 average_semantic_preservation=0.7777777777777778 dropped=24417
+  NUM: average_tsr=0.12746263303088426 average_semantic_preservation=0.9444444444444445 dropped=32591

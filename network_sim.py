@@ -48,7 +48,7 @@ class NetworkSimulator:
             arrivals = self.traffic_gen.generate_arrivals(t)
             self.maxweight_scheduler.enqueue(arrivals)
             
-            transmitted = self.maxweight_scheduler.schedule()
+            transmitted = self.maxweight_scheduler.schedule(t)
             
             weighted_throughput = sum(p.weight for p in transmitted)
             
@@ -81,7 +81,7 @@ class NetworkSimulator:
             arrivals = self.traffic_gen.generate_arrivals(t)
             self.num_scheduler.enqueue(arrivals)
             
-            transmitted = self.num_scheduler.schedule()
+            transmitted = self.num_scheduler.schedule(t)
             
             weighted_throughput = sum(p.weight for p in transmitted)
             

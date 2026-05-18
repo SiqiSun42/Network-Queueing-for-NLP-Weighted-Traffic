@@ -14,7 +14,7 @@ def run_complete_pipeline():
     run_comprehensive_experiment()
     
     print("\n\n" + "█" * 80)
-    print("PHASE 3: RAG-based Semantic Reconstruction & Task Success Rate Evaluation")
+    print("PHASE 3: End-to-end semantic TSR evaluation (delivered payloads vs corpus)")
     print("█" * 80)
     run_rag_evaluation()
     

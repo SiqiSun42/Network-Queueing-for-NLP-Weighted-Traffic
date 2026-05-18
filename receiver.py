@@ -15,9 +15,8 @@ class Receiver:
         self.lost_packets = lost_packet_ids
     
     def get_received_content(self) -> str:
-        contents = sorted([p.content for p in self.received_packets], 
-                         key=lambda x: int(x.split('_')[1]))
-        return ' '.join(contents)
+        ordered = sorted(self.received_packets, key=lambda p: p.packet_id)
+        return ' '.join(p.content for p in ordered)
     
     def get_statistics(self) -> dict:
         total_packets = len(self.received_packets) + len(self.lost_packets)

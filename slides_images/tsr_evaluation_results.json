@@ -1,0 +1,121 @@
+{
+  "description": "TSR from rag.py weighted_similarity(original_line_i, aggregate_delivered_packet_text) over first 3 corpus lines (None if no corpus). Semantic traffic packet payloads carry segment text; Max-Weight and NUM replay the same arrival trace.",
+  "scenarios": [
+    {
+      "scenario_name": "Semantic weights (TSR / light congestion)",
+      "sim_time": 500,
+      "link_capacity": 50,
+      "arrival_rate": 60,
+      "lambda_over_c": 1.2,
+      "weight_dist": "semantic",
+      "corpus_file": "corpus.txt",
+      "corpus_samples_used_for_tsr": 3,
+      "same_arrival_trace_for_both_schedulers": true,
+      "tsr_definition_ref": "rag.py weighted_similarity(original_corpus_line, received_aggregate_text); received text joins delivered packet payloads (semantic segments when weight_dist is semantic)",
+      "schedulers": {
+        "maxweight": {
+          "packets_dropped": 4955,
+          "tsr_per_corpus_sample": [
+            0.10424710424710425,
+            0.14013346043851288,
+            0.12643678160919541
+          ],
+          "semantic_preservation_per_corpus_sample": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "average_tsr": 0.12360578209827085,
+          "average_semantic_preservation": 1.0
+        },
+        "num": {
+          "packets_dropped": 16638,
+          "tsr_per_corpus_sample": [
+            0.10693069306930691,
+            0.1436950146627566,
+            0.12966601178781928
+          ],
+          "semantic_preservation_per_corpus_sample": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "average_tsr": 0.1267639065066276,
+          "average_semantic_preservation": 1.0
+        }
+      }
+    },
+    {
+      "scenario_name": "Bimodal weights (TSR / light congestion)",
+      "sim_time": 500,
+      "link_capacity": 50,
+      "arrival_rate": 60,
+      "lambda_over_c": 1.2,
+      "weight_dist": "bimodal",
+      "corpus_file": null,
+      "corpus_samples_used_for_tsr": 0,
+      "same_arrival_trace_for_both_schedulers": true,
+      "tsr_definition_ref": "rag.py weighted_similarity(original_corpus_line, received_aggregate_text); received text joins delivered packet payloads (semantic segments when weight_dist is semantic)",
+      "schedulers": {
+        "maxweight": {
+          "packets_dropped": 4600,
+          "tsr_per_corpus_sample": [],
+          "semantic_preservation_per_corpus_sample": [],
+          "average_tsr": null,
+          "average_semantic_preservation": null
+        },
+        "num": {
+          "packets_dropped": 12636,
+          "tsr_per_corpus_sample": [],
+          "semantic_preservation_per_corpus_sample": [],
+          "average_tsr": null,
+          "average_semantic_preservation": null
+        }
+      }
+    },
+    {
+      "scenario_name": "Semantic weights (TSR / heavy congestion)",
+      "sim_time": 500,
+      "link_capacity": 50,
+      "arrival_rate": 100,
+      "lambda_over_c": 2.0,
+      "weight_dist": "semantic",
+      "corpus_file": "corpus.txt",
+      "corpus_samples_used_for_tsr": 3,
+      "same_arrival_trace_for_both_schedulers": true,
+      "tsr_definition_ref": "rag.py weighted_similarity(original_corpus_line, received_aggregate_text); received text joins delivered packet payloads (semantic segments when weight_dist is semantic)",
+      "schedulers": {
+        "maxweight": {
+          "packets_dropped": 24417,
+          "tsr_per_corpus_sample": [
+            0.11703511053315996,
+            0.18797953964194375,
+            0.10038610038610041
+          ],
+          "semantic_preservation_per_corpus_sample": [
+            0.75,
+            1.0,
+            0.5833333333333334
+          ],
+          "average_tsr": 0.13513358352040136,
+          "average_semantic_preservation": 0.7777777777777778
+        },
+        "num": {
+          "packets_dropped": 32591,
+          "tsr_per_corpus_sample": [
+            0.1166306695464363,
+            0.1565495207667732,
+            0.10920770877944325
+          ],
+          "semantic_preservation_per_corpus_sample": [
+            1.0,
+            1.0,
+            0.8333333333333334
+          ],
+          "average_tsr": 0.12746263303088426,
+          "average_semantic_preservation": 0.9444444444444445
+        }
+      }
+    }
+  ]
+}

@@ -13,6 +13,7 @@ class NUMScheduler:
         self.total_dropped = 0
         self.total_arrived_weight = 0.0
         self.total_dropped_weight = 0.0
+        self.wait_by_tier = {'low': [], 'medium': [], 'high': []}
         
         self.optimal_rates = self._initialize_optimal_rates()
     
@@ -27,7 +28,11 @@ class NUMScheduler:
         self.total_arrived += len(packets)
         self.total_arrived_weight += sum(p.weight for p in packets)
     
-    def schedule(self) -> list[Packet]:
+    def _record_wait(self, pkt: Packet, slot: int):
+        delay = slot - pkt.arrival_time
+        self.wait_by_tier[pkt.weight_tier()].append(delay)
+    
+    def schedule(self, slot: int) -> list[Packet]:
         transmitted = []
         
         if not self.queue:
@@ -48,11 +53,13 @@ class NUMScheduler:
             transmitted.append(low_priority[i])
         
         for pkt in transmitted:
+            self._record_wait(pkt, slot)
             self.queue.remove(pkt)
         
         max_queue_size = self.link_capacity * 5
         while len(self.queue) > max_queue_size:
             drop_pkt = min(self.queue, key=lambda p: p.weight)
+            self._record_wait(drop_pkt, slot)
             self.queue.remove(drop_pkt)
             self.total_dropped += 1
             self.total_dropped_weight += drop_pkt.weight

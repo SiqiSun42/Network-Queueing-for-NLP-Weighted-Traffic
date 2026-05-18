@@ -41,11 +41,11 @@ class PoissonTrafficGenerator:
         
         packets = []
         for _ in range(num_arrivals):
-            weight = self._generate_weight()
+            weight, content = self._sample_packet_payload()
             packet = Packet(
                 packet_id=self.packet_counter,
                 weight=weight,
-                content=f"packet_{self.packet_counter}",
+                content=content,
                 arrival_time=current_time,
                 size=1
             )
@@ -54,25 +54,27 @@ class PoissonTrafficGenerator:
         
         return packets
     
-    def _generate_weight(self) -> float:
+    def _sample_packet_payload(self) -> tuple[float, str]:
+        pid = self.packet_counter
         if self.weight_dist == "uniform":
-            return random.uniform(0.1, 1.0)
+            return random.uniform(0.1, 1.0), f"packet_{pid}"
         elif self.weight_dist == "normal":
             u1 = random.random()
             u2 = random.random()
             z = math.sqrt(-2 * math.log(u1)) * math.cos(2 * math.pi * u2)
             w = 0.5 + 0.2 * z
-            return max(0.1, min(1.0, w))
+            w = max(0.1, min(1.0, w))
+            return w, f"packet_{pid}"
         elif self.weight_dist == "bimodal":
             if random.random() < 0.3:
-                return random.uniform(0.8, 1.0)
+                return random.uniform(0.8, 1.0), f"packet_{pid}"
             else:
-                return random.uniform(0.1, 0.3)
+                return random.uniform(0.1, 0.3), f"packet_{pid}"
         elif self.weight_dist == "semantic":
             if self.segment_pool:
                 segment = random.choice(self.segment_pool)
-                return segment['weight']
+                return segment['weight'], segment['text']
             else:
-                return random.uniform(0.1, 1.0)
+                return random.uniform(0.1, 1.0), f"packet_{pid}"
         else:
-            return random.uniform(0.1, 1.0)
+            return random.uniform(0.1, 1.0), f"packet_{pid}"
