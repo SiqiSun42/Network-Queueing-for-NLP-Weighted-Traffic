@@ -10,10 +10,13 @@ class MaxWeightScheduler:
         self.total_arrived = 0
         self.total_transmitted = 0
         self.total_dropped = 0
+        self.total_arrived_weight = 0.0
+        self.total_dropped_weight = 0.0
     
     def enqueue(self, packets: list[Packet]):
         self.queue.extend(packets)
         self.total_arrived += len(packets)
+        self.total_arrived_weight += sum(p.weight for p in packets)
     
     def schedule(self) -> list[Packet]:
         transmitted = []
@@ -23,6 +26,7 @@ class MaxWeightScheduler:
             drop_pkt = min(self.queue, key=lambda p: p.weight)
             self.queue.remove(drop_pkt)
             self.total_dropped += 1
+            self.total_dropped_weight += drop_pkt.weight
         
         if not self.queue:
             return transmitted

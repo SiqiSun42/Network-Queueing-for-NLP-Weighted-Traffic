@@ -11,6 +11,8 @@ class NUMScheduler:
         self.total_arrived = 0
         self.total_transmitted = 0
         self.total_dropped = 0
+        self.total_arrived_weight = 0.0
+        self.total_dropped_weight = 0.0
         
         self.optimal_rates = self._initialize_optimal_rates()
     
@@ -23,6 +25,7 @@ class NUMScheduler:
     def enqueue(self, packets: list[Packet]):
         self.queue.extend(packets)
         self.total_arrived += len(packets)
+        self.total_arrived_weight += sum(p.weight for p in packets)
     
     def schedule(self) -> list[Packet]:
         transmitted = []
@@ -47,11 +50,12 @@ class NUMScheduler:
         for pkt in transmitted:
             self.queue.remove(pkt)
         
-        max_queue_size = self.link_capacity * 3
+        max_queue_size = self.link_capacity * 5
         while len(self.queue) > max_queue_size:
             drop_pkt = min(self.queue, key=lambda p: p.weight)
             self.queue.remove(drop_pkt)
             self.total_dropped += 1
+            self.total_dropped_weight += drop_pkt.weight
         
         self.total_transmitted += len(transmitted)
         return transmitted

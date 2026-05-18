@@ -1,0 +1,44 @@
+{
+  "lambda_over_c": [
+    0.6,
+    0.8,
+    1.0,
+    1.2,
+    1.5
+  ],
+  "link_capacity": 50,
+  "metric_mean_per_timeslot": "mean over timeslots of (sum of semantic weights of packets transmitted in that slot)",
+  "y_axis": "100 * (that_mean / link_capacity); comparable scale, not end-to-end task success rate",
+  "results": {
+    "maxweight": [
+      16.432260710951063,
+      22.16592291123149,
+      27.443935960687867,
+      31.234119776707956,
+      35.02242096923474
+    ],
+    "num": [
+      16.207801843579606,
+      20.740780066840532,
+      24.884548798068533,
+      29.029906709716368,
+      34.15572733017461
+    ]
+  },
+  "normalized_series_percent_of_C": {
+    "maxweight": [
+      32.864521421902126,
+      44.33184582246298,
+      54.887871921375734,
+      62.46823955341591,
+      70.04484193846947
+    ],
+    "num": [
+      32.41560368715921,
+      41.48156013368107,
+      49.769097596137065,
+      58.05981341943274,
+      68.31145466034921
+    ]
+  }
+}

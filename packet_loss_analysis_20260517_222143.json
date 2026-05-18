@@ -1,0 +1,27 @@
+{
+  "link_capacity": 50,
+  "arrival_rate": 75,
+  "lambda_over_c": 1.5,
+  "sim_time": 300,
+  "timestamp": "20260517_222143",
+  "schedulers": {
+    "maxweight": {
+      "total_arrived": 22501,
+      "total_dropped": 7301,
+      "total_arrived_weight": 12368.186779903932,
+      "total_dropped_weight": 1790.267464840458,
+      "unweighted_loss_rate": 0.324474467801431,
+      "weighted_loss_rate": 0.1447477707685753,
+      "transmitted": 15000
+    },
+    "num": {
+      "total_arrived": 22723,
+      "total_dropped": 7951,
+      "total_arrived_weight": 12482.223806660331,
+      "total_dropped_weight": 2264.0525627551715,
+      "unweighted_loss_rate": 0.3499097830392114,
+      "weighted_loss_rate": 0.18138214775055597,
+      "transmitted": 14622
+    }
+  }
+}

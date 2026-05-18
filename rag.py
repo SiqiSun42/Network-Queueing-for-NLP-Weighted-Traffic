@@ -1,18 +1,50 @@
 import random
-from nlp_weight import tokenize
+from nlp_weight import tokenize, STOPWORDS, IMPORTANT_KEYWORDS
 
 
-def simple_similarity(text1: str, text2: str) -> float:
-    tokens1 = set(tokenize(text1))
-    tokens2 = set(tokenize(text2))
+def get_token_weight(token: str) -> float:
+    if token in STOPWORDS:
+        return 0.1
+    elif token in IMPORTANT_KEYWORDS:
+        return 1.0
+    elif len(token) > 6:
+        return 0.6
+    elif len(token) > 3:
+        return 0.4
+    else:
+        return 0.2
+
+
+def weighted_similarity(text1: str, text2: str) -> float:
+    tokens1_list = tokenize(text1)
+    tokens2_list = tokenize(text2)
     
-    if not tokens1 or not tokens2:
+    if not tokens1_list or not tokens2_list:
         return 0.0
     
-    intersection = len(tokens1 & tokens2)
-    union = len(tokens1 | tokens2)
+    tokens1_set = set(tokens1_list)
+    tokens2_set = set(tokens2_list)
     
-    return intersection / union if union > 0 else 0.0
+    token_weights = {}
+    for t in tokens1_set | tokens2_set:
+        token_weights[t] = get_token_weight(t)
+    
+    intersection_tokens = tokens1_set & tokens2_set
+    
+    if not intersection_tokens:
+        return 0.0
+    
+    intersection_weight = sum(token_weights.get(t, 0.1) for t in intersection_tokens)
+    
+    tokens1_weight = sum(token_weights.get(t, 0.1) for t in tokens1_set)
+    tokens2_weight = sum(token_weights.get(t, 0.1) for t in tokens2_set)
+    
+    recall = intersection_weight / tokens1_weight if tokens1_weight > 0 else 0.0
+    precision = intersection_weight / tokens2_weight if tokens2_weight > 0 else 0.0
+    
+    f_score = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0.0
+    
+    return min(1.0, f_score * 1.5)
 
 
 class RAGReconstructor:
@@ -51,8 +83,8 @@ class TaskSuccessRateCalculator:
     
     @staticmethod
     def calculate_tsr(original: str, reconstructed: str) -> float:
-        sim = simple_similarity(original, reconstructed)
-        return min(1.0, sim * 1.5)
+        sim = weighted_similarity(original, reconstructed)
+        return sim
     
     @staticmethod
     def calculate_semantic_preservation(original_tokens: set, 
