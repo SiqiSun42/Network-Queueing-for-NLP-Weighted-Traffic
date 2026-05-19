@@ -128,5 +128,5 @@ class PacketLossAnalysis:
 
 if __name__ == '__main__':
     analysis = PacketLossAnalysis()
-    meta = analysis.run_analysis(link_capacity=50, arrival_rate=75, sim_time=300)
+    meta = analysis.run_analysis(link_capacity=50, arrival_rate=60, sim_time=300)
     analysis.print_comparison(meta)
