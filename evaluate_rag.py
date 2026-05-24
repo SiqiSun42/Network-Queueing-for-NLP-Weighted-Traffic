@@ -14,20 +14,14 @@ def run_rag_evaluation():
     
     scenarios = [
         {
-            "name": "Semantic weights (TSR / light congestion)",
+            "name": "Semantic weights\n(λ/C = 1.2)",
             "link_capacity": 50,
             "arrival_rate": 60,
             "weight_dist": "semantic",
             "corpus_file": "corpus.txt"
         },
         {
-            "name": "Bimodal weights (TSR / light congestion)",
-            "link_capacity": 50,
-            "arrival_rate": 60,
-            "weight_dist": "bimodal"
-        },
-        {
-            "name": "Semantic weights (TSR / heavy congestion)",
+            "name": "Semantic weights\n(λ/C = 2.0)",
             "link_capacity": 50,
             "arrival_rate": 100,
             "weight_dist": "semantic",
